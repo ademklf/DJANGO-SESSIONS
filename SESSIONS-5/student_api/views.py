@@ -9,6 +9,8 @@ from rest_framework import status
 
 # Create your views here.
 
+def real_home(request):
+    return HttpResponse('This main home page ....')
 
 def home(request):
     return HttpResponse('<h1>API Page</h1>')
