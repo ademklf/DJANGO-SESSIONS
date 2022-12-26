@@ -1,45 +1,13 @@
-# from django.db import models
-
-# # Create your models here.
-
-# class Student(models.Model):
-#     first_name = models.CharField(max_length=50)
-#     last_name = models.CharField(max_length=50)
-#     number = models.IntegerField(blank=True, null= True)
-#     aga= models.IntegerField()
-
-# def __str__(self):
-#     return self.first_name
-
-
-# from django.db import models
-
-# # Create your models here.
-
-
-# class Student(models.Model):
-#     first_name = models.CharField(max_length=50)
-#     last_name = models.CharField(max_length=50)
-#     number = models.IntegerField(blank=True, null=True)
-#     age = models.IntegerField()
-
-#     def __str__(self):
-#         return self.first_name
-
 from django.db import models
 
-class Path(models.Model):
-    path_name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return f"{self.path_name}"
+# Create your models here.
+from django.db import models
 
 class Student(models.Model):
-    path = models.ForeignKey(Path, related_name='students', on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+    first_name= models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
     number = models.IntegerField(blank=True, null=True)
     age = models.IntegerField()
 
     def __str__(self):
-        return f"{self.last_name} {self.first_name}"
+        return self.first_name
