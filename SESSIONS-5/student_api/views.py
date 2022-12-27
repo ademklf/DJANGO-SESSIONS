@@ -34,4 +34,22 @@ def student_create(reguest):
             "message":f'Student updated successfully ...'
         }
         return Response(message, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) #status kodlar burada belirlenebilir ve kullanıcının doğru bilgilendirilmesi iyi olur
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) #status kodlar burada belirlenebilir ve kullanıcının doğru bilgilendirilmesi iyi olur.
+
+@api_view(['GET'])
+def student_detail(reguest, pk):
+    student = get_object_or_404(Student, id=pk)
+    serializer = StudentSerializer(student)
+    return Response(serializer.data)
+ 
+@api_view(['PUT'])
+def student_update(reguest, pk):
+    student = get_object_or_404(Student, id=pk)
+    serializer = StudentSerializer(student, data=reguest.data)
+    if serializer.is_valid():
+        serializer.save()
+        message ={
+            "message":f'Student updated successfully ...'
+        }
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
