@@ -53,3 +53,13 @@ def student_update(reguest, pk):
         }
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
+def student_delete(reguest,pk):
+    student = get_object_or_404(Student, id=pk)
+    student.delete()
+    message = { 
+        "message": 'Student deleted succesfully ...'
+    }
+    return Response(message)
