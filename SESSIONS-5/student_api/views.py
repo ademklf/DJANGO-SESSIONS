@@ -19,8 +19,19 @@ def home (reguest):
 # - delete (DB de kayıt silme)
 # - patch (kısmi update değişiklik olan yerler güncellenir)
 
-@api_view()
+@api_view(['GET'])
 def students_list(reguest):
     students = Student.objects.all()
     serializer = StudentSerializer(students, many=True)  # birden çok olduğunda many=True yazılır.
     return Response(serializer.data)
+
+@api_view(['POST'])
+def student_create(reguest):
+    serializer = StudentSerializer(data=reguest.data)
+    if serializer.is_valid():
+        serializer.save()
+        message ={
+            "message":f'Student updated successfully ...'
+        }
+        return Response(message, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) #status kodlar burada belirlenebilir ve kullanıcının doğru bilgilendirilmesi iyi olur
