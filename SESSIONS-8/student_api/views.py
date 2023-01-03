@@ -238,15 +238,15 @@ class StudentDetailCV(RetrieveUpdateDestroyAPIView):
 
 from .pagination import CustomPageNumberPagination, CustomLimitOffsetPagination, CustomCursorPagination
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.filters import SearchFilter,OrderingFilter
 class StudentMVS(ModelViewSet):
     
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    # pagination_class = CustomPageNumberPagination
+    pagination_class = CustomPageNumberPagination
     # pagination_class = CustomLimitOffsetPagination
-    pagination_class = CustomCursorPagination
-    filter_backends=[DjangoFilterBackend, SearchFilter]
+    # pagination_class = CustomCursorPagination
+    filter_backends=[DjangoFilterBackend,SearchFilter,OrderingFilter]
     filterset_fields= ['id', 'first_name','last_name']
     search_fields = ['first_name','last_name']
     
