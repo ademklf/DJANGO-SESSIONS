@@ -40,9 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    #thirdparty
+    'rest_framework',
+    'django_filters',
+
     #my_apps
     'student_api',
-    'rest_framework',
+
+
+    
 ]
 
 MIDDLEWARE = [
@@ -132,6 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     # 'PAGE_SIZE': 30,
-#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CursorPagination',
-#     'PAGE_SIZE': 30,
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CursorPagination',
+    # 'PAGE_SIZE': 30,
+    #   'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
  }
